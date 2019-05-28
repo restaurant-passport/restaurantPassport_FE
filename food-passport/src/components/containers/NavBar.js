@@ -1,12 +1,19 @@
 import React from "react";
-import StyledNavBar from "../../styles/StyledNavBar";
+import {
+  StyledNavBar,
+  StyledNavLinks,
+  StyledNavLinksContainer
+} from "../../styles/StyledNavBar";
 
 function NavBar() {
   return (
     <StyledNavBar>
-      <h1>FP</h1>
-      <h3>Passports</h3>
-      <h3>Login</h3>
+      <h1>Food Passport</h1>
+      <StyledNavLinksContainer>
+        <StyledNavLinks to="/">Home</StyledNavLinks>
+        <StyledNavLinks to="/passports">Passports</StyledNavLinks>
+        <StyledNavLinks to="/loginPage">Login</StyledNavLinks>
+      </StyledNavLinksContainer>
     </StyledNavBar>
   );
 }

@@ -4,6 +4,7 @@ const withAuthenticate = PassportList => LoginPage =>
   class extends React.Component {
     constructor(props) {
       super(props);
+      console.log(props);
       this.state = {
         loggedIn: false
       };
@@ -19,7 +20,7 @@ const withAuthenticate = PassportList => LoginPage =>
 
     render() {
       if (this.state.loggedIn) {
-        return <PassportList />;
+        return <PassportList passports={this.props.passports} />;
       } else {
         return <LoginPage />;
       }

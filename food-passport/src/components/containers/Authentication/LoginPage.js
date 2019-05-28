@@ -25,7 +25,7 @@ class LoginPage extends React.Component {
       <LoginPageStyled>
         {/* <i class="" /> some kind of food icon  */}
         <h1>
-          Login to your <span>Food Passport</span>!
+          Login to see your <span>Food Passports</span>!
         </h1>
         <FormStyled>
           <input

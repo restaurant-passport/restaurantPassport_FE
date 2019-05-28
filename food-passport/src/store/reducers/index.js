@@ -1,7 +1,12 @@
 import { FETCHING_CITIES, CITIES_RETRIEVED } from "../actions";
 
 const initialState = {
-  passports: [],
+  passports: [
+    {
+      city: "",
+      restaurants: []
+    }
+  ],
   loadingPassports: false
 };
 
