@@ -51,7 +51,7 @@ class LoginPage extends React.Component {
 
 const LoginPageStyled = styled.div`
   // border: 1px solid black;
-  margin: 50% auto;
+  margin: auto;
   display: flex;
   justify-content: center;
   flex-direction: column;

@@ -18,7 +18,6 @@ class App extends Component {
     return (
       <StyledApp>
         <NavBar />
-        <h1>hello</h1>
         <ComponentFromWithAuthenticate />
       </StyledApp>
     );
