@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components";
 
 class LoginPage extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       username: "",
       password: ""
@@ -59,12 +59,6 @@ const LoginPageStyled = styled.div`
 
   .fa-instagram {
     font-size: 5rem;
-  }
-
-  h1 {
-    span {
-      font-family: "Dancing Script", cursive;
-    }
   }
 `;
 

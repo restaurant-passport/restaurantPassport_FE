@@ -9,9 +9,15 @@ import PassportList from "./components/containers/PassportList";
 const ComponentFromWithAuthenticate = withAuthenticate(PassportList)(LoginPage);
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {};
+  }
+
   render() {
     return (
       <StyledApp>
+        <NavBar />
         <h1>hello</h1>
         <ComponentFromWithAuthenticate />
       </StyledApp>
