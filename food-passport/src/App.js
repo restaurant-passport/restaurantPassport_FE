@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Route } from "react-router-dom";
 import StyledApp from "./styles/StyledApp";
 import { connect } from "react-redux";
-import { getCities } from "./store/actions";
+import { getPassports } from "./store/actions";
 import PrivateRoute from "./components/Authentication/PrivateRoute";
 import LoginPage from "./components/Authentication/LoginPage";
 import LandingPage from "./components/LandingPage";
@@ -45,5 +45,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { getCities }
+  { getPassports }
 )(App);

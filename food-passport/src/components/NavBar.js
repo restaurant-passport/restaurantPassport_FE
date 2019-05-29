@@ -12,7 +12,7 @@ function NavBar() {
       <StyledNavLinksContainer>
         <StyledNavLinks to="/">Home</StyledNavLinks>
         <StyledNavLinks to="/passports">Passports</StyledNavLinks>
-        <StyledNavLinks to="/loginPage">Login</StyledNavLinks>
+        <StyledNavLinks to="/login">Login</StyledNavLinks>
       </StyledNavLinksContainer>
     </StyledNavBar>
   );

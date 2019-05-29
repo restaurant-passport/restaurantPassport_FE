@@ -1,23 +1,31 @@
 import React from "react";
+import { connect } from "react-redux";
+import { login } from "../../store/actions/index";
+
 import styled from "styled-components";
 
 class LoginPage extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+  state = {
+    credentials: {
       username: "",
       password: ""
-    };
-  }
+    }
+  };
 
   handleChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
+    this.setState({
+      credentials: {
+        ...this.state.credentials,
+        [event.target.name]: event.target.value
+      }
+    });
   };
 
   handleLogin = event => {
-    const user = this.state.username;
-    localStorage.setItem("user", user);
-    window.location.reload();
+    event.preventDefault();
+    this.props.login(this.state.credentials).then(() => {
+      this.props.history.push("/passports");
+    });
   };
 
   render() {
@@ -27,19 +35,19 @@ class LoginPage extends React.Component {
         <h1>
           Login to see your <span>Food Passports</span>!
         </h1>
-        <FormStyled>
+        <FormStyled onSubmit={this.handleLogin}>
           <input
             type="text"
             placeholder="username"
             name="username"
-            value={this.state.username}
+            value={this.state.credentials.username}
             onChange={this.handleChange}
           />
           <input
-            type="text"
+            type="password"
             placeholder="password"
             name="password"
-            value={this.state.password}
+            value={this.state.credentials.password}
             onChange={this.handleChange}
           />
           <button onClick={this.handleLogin}>Log In</button>
@@ -83,5 +91,11 @@ const FormStyled = styled.form`
     width: 100%;
   }
 `;
+const mapStateToProps = ({ isLoggedIn }) => ({
+  isLoggedIn
+});
 
-export default LoginPage;
+export default connect(
+  mapStateToProps,
+  { login }
+)(LoginPage);

@@ -15,11 +15,11 @@ const sendUserError = (msg, res) => {
 let passports = [
   {
     city: "Eugene",
-    restaurants: []
+    restaurants: ["Toshi's Ramen", "Makoto", "Tacovore"]
   },
   {
     city: "San Diego",
-    restaurants: []
+    restaurants: ["The Broken Yolk", "Searsucker", "Water Grill"]
   }
 ];
 server.get("/passports", (req, res) => {

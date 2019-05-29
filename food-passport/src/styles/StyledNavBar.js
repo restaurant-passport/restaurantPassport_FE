@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export const StyledNavBar = styled.div`
   display: flex;
@@ -24,7 +24,7 @@ export const StyledNavBar = styled.div`
 
 export const StyledNavLinksContainer = styled.div``;
 
-export const StyledNavLinks = styled(Link)`
+export const StyledNavLinks = styled(NavLink)`
   text-decoration: none;
   color: #e3c4a8;
   justify-content: flex-end;
