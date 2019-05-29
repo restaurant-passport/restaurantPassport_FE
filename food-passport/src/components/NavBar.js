@@ -3,7 +3,7 @@ import {
   StyledNavBar,
   StyledNavLinks,
   StyledNavLinksContainer
-} from "../../styles/StyledNavBar";
+} from "../styles/StyledNavBar";
 
 function NavBar() {
   return (
