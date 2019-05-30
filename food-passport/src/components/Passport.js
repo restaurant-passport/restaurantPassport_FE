@@ -20,14 +20,19 @@ function Passport(props) {
 
   return (
     <div>
-      <h3>City</h3>
-      <ul>
-        <li>restaurant</li>
-        <li>restaurant</li>
-        <li>restaurant</li>
-        <li>restaurant</li>
-        <li>restaurant</li>
-      </ul>
+      {props.passports.map(passport => (
+        <div key={passport.id}>
+          <h3>{}</h3>
+          <ul>
+            <li>restaurant</li>
+            <li>restaurant</li>
+            <li>restaurant</li>
+            <li>restaurant</li>
+            <li>restaurant</li>
+          </ul>
+        </div>
+      ))}
+      <input type="text" placeholder="add a restaurant" />
       <div className="passport buttons">
         <button>Update Passport</button>
         <button>Delete Passport</button>
