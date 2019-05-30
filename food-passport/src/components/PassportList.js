@@ -1,4 +1,5 @@
 import React from "react";
+<<<<<<< HEAD
 import Passport from "./Passport";
 
 function PassportList(props) {
@@ -20,8 +21,20 @@ function PassportList(props) {
           </ul>
         </div>
       ))} */}
+=======
+
+
+function PassportList() {
+  return (
+    <div>
+      <h1>Passport List</h1>
+>>>>>>> 5a1e635d0f939dd65e08687c01f815d05b153e15
     </div>
   );
 }
 
+<<<<<<< HEAD
 export default PassportList;
+=======
+export default PassportList;
+>>>>>>> 5a1e635d0f939dd65e08687c01f815d05b153e15
