@@ -29,7 +29,7 @@ const Restaurant = props => {
 
 Restaurant.defaultProps = {
   name: "",
-  review: "",
+  comment: "",
   meal: ""
 };
 
