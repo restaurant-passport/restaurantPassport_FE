@@ -37,7 +37,7 @@ function Passport(props) {
           <input type="text" placeholder="add a restaurant" />
           <div className="passport buttons">
             <button onClick={e => props.updatePassport(e, passport.id)}>Update Passport</button>
-            <button onClick={e => this.state.props.deletePassport(e, passport.id)}>Delete Passport</button>
+            <button onClick={e => props.deletePassport(e, passport.id)}>Delete Passport</button>
           </div>
         </div>
       ))}
