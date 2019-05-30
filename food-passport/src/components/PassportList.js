@@ -7,6 +7,7 @@ class PassportList extends React.Component {
   componentDidMount() {
     this.props.getPassports();
   }
+
   render() {
     return (
       <div>

@@ -1,17 +1,22 @@
 import axios from "axios";
 
 // Login Token
+export const LOGIN_START = "LOGIN_START";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const LOGIN_FAILURE = "LOGIN_FAILURE";
 
-export function login() {
-  return {
-    type: LOGIN_SUCCESS,
-    payload: {
-      token:
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
-    }
-  };
-}
+export const login = creds => dispatch => {
+  dispatch({ type: LOGIN_START });
+  return axios
+    .post("/api/login", creds)
+    .then(res => {
+      localStorage.setItem("token", res.data.token);
+      dispatch({ type: LOGIN_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      dispatch({ type: LOGIN_FAILURE, payload: err.response.message });
+    });
+};
 
 // Fetching Passports
 export const FETCHING_PASSPORTS = "FETCHING_PASSPORTS";

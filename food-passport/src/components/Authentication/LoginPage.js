@@ -23,12 +23,13 @@ class LoginPage extends React.Component {
 
   handleLogin = event => {
     event.preventDefault();
-    this.props.login(this.state.credentials).then(() => {
+    this.props.login(this.setState.credentials).then(() => {
       this.props.history.push("/passports");
     });
   };
 
   render() {
+    // console.log(this.props);
     return (
       <LoginPageStyled>
         {/* <i class="" /> some kind of food icon  */}
@@ -91,11 +92,8 @@ const FormStyled = styled.form`
     width: 100%;
   }
 `;
-const mapStateToProps = ({ isLoggedIn }) => ({
-  isLoggedIn
-});
 
 export default connect(
-  mapStateToProps,
+  null,
   { login }
 )(LoginPage);
