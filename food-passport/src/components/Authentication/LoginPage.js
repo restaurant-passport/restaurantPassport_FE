@@ -75,12 +75,14 @@ const FormStyled = styled.form`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   input {
     margin: 3px auto;
     border-radius: 3px;
     border-style: none;
     border-bottom: 1px solid black;
   }
+
   button {
     border-radius: 3px;
     margin: 3px auto;

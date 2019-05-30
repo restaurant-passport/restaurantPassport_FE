@@ -2,8 +2,9 @@ import {
   FETCHING_PASSPORTS,
   PASSPORTS_RETRIEVED,
   ADDING_PASSPORT,
-  ADDED_PASSPORT,
-  LOGIN_SUCCESS
+  // ADDED_PASSPORT,
+  LOGIN_SUCCESS,
+  DELETE_PASSPORT
 } from "../actions";
 
 const initialState = {
@@ -44,13 +45,19 @@ function passportReducer(state = initialState, action) {
         loadingPassports: true,
         addingPassport: true
       };
-    case ADDED_PASSPORT:
+    // case ADDED_PASSPORT:
+    //   return {
+    //     ...state,
+    //     passports: action.payload,
+    //     loadingPassports: false,
+    //     addingPassport: false
+    //   };
+    case DELETE_PASSPORT:
       return {
         ...state,
-        passports: action.payload,
-        loadingPassports: false,
-        addingPassport: false
-      };
+        passport:action.payload,
+        deletingPassport: true
+      }
     default:
       return state;
   }

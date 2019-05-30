@@ -1,4 +1,7 @@
 import React from "react";
+import Restaurant from "./Restaurant";
+import {connect} from 'react-redux';
+import {deletePassport, updatePassport}from "../store/actions/index" ;
 
 function Passport(props) {
   //   const passport = props.passport.find(
@@ -20,20 +23,43 @@ function Passport(props) {
 
   return (
     <div>
-      <h3>City</h3>
-      <ul>
-        <li>restaurant</li>
-        <li>restaurant</li>
-        <li>restaurant</li>
-        <li>restaurant</li>
-        <li>restaurant</li>
-      </ul>
-      <div className="passport buttons">
-        <button>Update Passport</button>
-        <button>Delete Passport</button>
-      </div>
+      {props.passports.map(passport => (
+        <div key={passport.id}>
+          <h3>{passport.city}</h3>
+
+          {passport.restaurants.map((restaurant, index) => (
+            <ul>
+              <li key={restaurant.name}>
+                <Restaurant restaurant={restaurant} />
+              </li>
+            </ul>
+          ))}
+          <input type="text" placeholder="add a restaurant" />
+          <div className="passport buttons">
+            <button onClick={e => props.updatePassport(e, passport.id)}>Update Passport</button>
+            <button onClick={e => this.state.props.deletePassport(e, passport.id)}>Delete Passport</button>
+          </div>
+        </div>
+      ))}
     </div>
   );
 }
 
-export default Passport;
+const mapStateToProps = state => {
+  return {
+    passports: state.passports,
+    deletingPassport: state.deletingPassport,
+    updatePassports: state.updatePassport
+  }
+};
+
+// const mapActionToProps = state => {
+//   return {
+//     passports: state.passports,
+    
+//   }
+// }
+
+
+
+export default connect(mapStateToProps,{deletePassport, updatePassport}) (Passport);

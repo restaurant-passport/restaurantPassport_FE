@@ -28,7 +28,7 @@ class RestaurantForm extends Component {
     }
     
     axios
-    .post("http://localhost:3333/passports", newRestaurant)
+    .post("http://localhost:3333/smurfs", newRestaurant)
     .then(res => {
       this.props.addRestaurants(res.data)
       this.props.history.push('/'); 
