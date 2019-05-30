@@ -1,4 +1,5 @@
 import React from "react";
+import Restaurant from "./Restaurant";
 
 function Passport(props) {
   //   const passport = props.passport.find(
@@ -22,21 +23,22 @@ function Passport(props) {
     <div>
       {props.passports.map(passport => (
         <div key={passport.id}>
-          <h3>{}</h3>
-          <ul>
-            <li>restaurant</li>
-            <li>restaurant</li>
-            <li>restaurant</li>
-            <li>restaurant</li>
-            <li>restaurant</li>
-          </ul>
+          <h3>{passport.city}</h3>
+
+          {passport.restaurants.map((restaurant, index) => (
+            <ul>
+              <li key={restaurant.name}>
+                <Restaurant restaurant={restaurant} />
+              </li>
+            </ul>
+          ))}
+          <input type="text" placeholder="add a restaurant" />
+          <div className="passport buttons">
+            <button>Update Passport</button>
+            <button>Delete Passport</button>
+          </div>
         </div>
       ))}
-      <input type="text" placeholder="add a restaurant" />
-      <div className="passport buttons">
-        <button>Update Passport</button>
-        <button>Delete Passport</button>
-      </div>
     </div>
   );
 }
