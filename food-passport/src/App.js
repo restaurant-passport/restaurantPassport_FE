@@ -13,12 +13,12 @@ import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 
 class App extends Component {
-  componentDidMount() {
-    const token = localStorage.getItem("token");
-    if (localStorage.getItem("data")) {
-      this.props.getData(JSON.parse(localStorage.getItem("data")));
-    }
-  }
+  // componentDidMount() {
+  //   const token = localStorage.getItem("token");
+  //   if (localStorage.getItem("data")) {
+  //     this.props.getData(JSON.parse(localStorage.getItem("data")));
+  //   }
+  // }
 
   render() {
     return (

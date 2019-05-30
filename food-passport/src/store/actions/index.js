@@ -1,10 +1,5 @@
 import axios from "axios";
 
-export const FETCHING_PASSPORTS = "FETCHING_PASSPORTS";
-export const PASSPORTS_RETRIEVED = "PASSPORTS_RETRIEVED";
-export const ADDING_PASSPORT = "ADDING_PASSPORT";
-export const ADDED_PASSPORT = "ADDED_PASSPORT";
-
 // Login Token
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 
@@ -19,6 +14,9 @@ export function login() {
 }
 
 // Fetching Passports
+export const FETCHING_PASSPORTS = "FETCHING_PASSPORTS";
+export const PASSPORTS_RETRIEVED = "PASSPORTS_RETRIEVED";
+
 export const getPassports = () => dispatch => {
   dispatch({
     type: FETCHING_PASSPORTS
@@ -38,6 +36,9 @@ export const getPassports = () => dispatch => {
 };
 
 //Add Passport
+export const ADDING_PASSPORT = "ADDING_PASSPORT";
+export const PASSPORT_ADDED = "PASSPORT_ADDED";
+
 export const addPassport = passport => dispatch => {
   dispatch({
     type: ADDING_PASSPORT
@@ -47,7 +48,7 @@ export const addPassport = passport => dispatch => {
     .then(response => {
       console.log(response.data);
       dispatch({
-        type: ADDED_PASSPORT,
+        type: PASSPORT_ADDED,
         payload: response.data
       });
     })
@@ -56,22 +57,47 @@ export const addPassport = passport => dispatch => {
     });
 };
 
-//Delete Passport
-// export const deletePassport = id => {
-//   axios
-//     .delete(`http://localhost:3333/passports/${id}`)
-//     .then(response => {
-//       console.log(response.data);
-//       dispatch({
-//         type: DELETE_PASSPORT,
-//         payload: response.data
-//       });
-//       this.props.history.push("/passports");
-//     })
-//     .catch(error => {
-//       console.log(error);
-//     });
-// };
+// Delete Passport
+export const DELETE_PASSPORT = "DELETE_PASSPORT";
+export const PASSPORT_DELETED = "PASSPORT_DELETED";
+
+export const deletePassport = id => dispatch => {
+  dispatch({
+    type: DELETE_PASSPORT
+  });
+  axios
+    .delete(`http://localhost:3333/passports/${id}`)
+    .then(response => {
+      console.log(response.data);
+      dispatch({
+        type: PASSPORT_DELETED,
+        payload: response.data
+      });
+      this.props.history.push("/passports");
+    })
+    .catch(error => {
+      console.log(error);
+    });
+};
 
 //Update Passport
-// export const updatePass
+export const UPDATE_PASSPORT = "UPDATE_PASSPORT";
+export const PASSPORT_UPDATED = "PASSPORT_UPDATED";
+
+export const updatePassport = passport => dispatch => {
+  dispatch({
+    type: UPDATE_PASSPORT
+  });
+  axios
+    .put(`http://localhost:3333/passports/${passport.id}`, passport)
+    .then(response => {
+      dispatch({
+        type: PASSPORT_UPDATED,
+        payload: response.data
+      });
+      this.props.history.push("/passports");
+    })
+    .catch(error => {
+      console.log(error);
+    });
+};

@@ -1,5 +1,6 @@
 import React from "react";
 import Restaurant from "./Restaurant";
+import styled from "styled-components";
 
 function Passport(props) {
   //   const passport = props.passport.find(
@@ -20,27 +21,42 @@ function Passport(props) {
   //   };
 
   return (
-    <div>
+    <StyledPassportContainer>
       {props.passports.map(passport => (
-        <div key={passport.id}>
-          <h3>{passport.city}</h3>
-
-          {passport.restaurants.map((restaurant, index) => (
-            <ul>
-              <li key={restaurant.name}>
+        <StyledPassport key={passport.city}>
+          <div>
+            <h3>{passport.city}</h3>
+            {passport.restaurants.map((restaurant, index) => (
+              <div key={restaurant.name}>
                 <Restaurant restaurant={restaurant} />
-              </li>
-            </ul>
-          ))}
+              </div>
+            ))}
+          </div>
+
           <input type="text" placeholder="add a restaurant" />
           <div className="passport buttons">
             <button>Update Passport</button>
             <button>Delete Passport</button>
           </div>
-        </div>
+        </StyledPassport>
       ))}
-    </div>
+    </StyledPassportContainer>
   );
 }
+
+const StyledPassport = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  width: 40%;
+`;
+
+const StyledPassportContainer = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+`;
 
 export default Passport;

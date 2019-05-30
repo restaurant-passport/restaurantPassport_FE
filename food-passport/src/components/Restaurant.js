@@ -5,10 +5,12 @@ const RestaurantCard = styled.div`
   margin: 0 auto;
   border: 2px outset black;
   display: flex;
+  flex-direction: column;
   justify-content: space-evenly;
+  align-items: center;
   margin-bottom: 20px;
   background-color: #4592af;
-  width: 50%;
+  width: 90%;
 `;
 
 const RestaurantName = styled.h3`
@@ -16,12 +18,13 @@ const RestaurantName = styled.h3`
 `;
 
 const Restaurant = props => {
+  console.log(props);
   return (
     <div>
       <RestaurantCard>
-        <RestaurantName>{props.restaurant.name}</RestaurantName>
-        <strong>{props.restaurant.meal}</strong>
-        <p>{props.restaurant.comment}</p>
+        <RestaurantName>Restaurant: {props.restaurant.name}</RestaurantName>
+        <strong>Meal: {props.restaurant.meal}</strong>
+        <p>Comment: {props.restaurant.comment}</p>
       </RestaurantCard>
     </div>
   );
