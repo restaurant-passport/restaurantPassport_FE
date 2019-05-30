@@ -1,3 +1,12 @@
+<<<<<<< HEAD
+import React from "react";
+
+function PassportForm() {
+  return <h1>passport form</h1>;
+}
+
+export default PassportForm;
+=======
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
@@ -67,3 +76,4 @@ class PassportForm extends Component {
 export default PassportForm;
 
 
+>>>>>>> 5a1e635d0f939dd65e08687c01f815d05b153e15

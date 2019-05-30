@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 const StyledApp = styled.div`
-  .App {
-    display: flex;
-  }
+  display: flex;
+  flex-direction: column;
+  background-color: #f6f5f5;
 
   /* .App-logo {
     animation: App-logo-spin infinite 20s linear;
