@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React from "react";
 
 function Passport(props) {
@@ -38,7 +37,3 @@ function Passport(props) {
 }
 
 export default Passport;
-=======
-
-
->>>>>>> 5a1e635d0f939dd65e08687c01f815d05b153e15

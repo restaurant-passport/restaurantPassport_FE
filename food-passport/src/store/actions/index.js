@@ -1,6 +1,5 @@
 import axios from "axios";
 
-<<<<<<< HEAD
 export const FETCHING_PASSPORTS = "FETCHING_PASSPORTS";
 export const PASSPORTS_RETRIEVED = "PASSPORTS_RETRIEVED";
 export const ADDING_PASSPORT = "ADDING_PASSPORT";
@@ -17,28 +16,12 @@ export const getPassports = () => dispatch => {
       console.log(response.data);
       dispatch({
         type: PASSPORTS_RETRIEVED,
-=======
-export const FETCHING_CITIES = "FETCHING_CITIES";
-export const CITIES_RETRIEVED = "CITIES_RETRIEVED";
-
-export const getCities = () => dispatch => {
-  dispatch({
-    type: FETCHING_CITIES
-  });
-  axios
-    .get("")
-    .then(response => {
-      console.log(response.data);
-      dispatch({
-        type: CITIES_RETRIEVED,
->>>>>>> 5a1e635d0f939dd65e08687c01f815d05b153e15
         payload: response.data
       });
     })
     .catch(err => {
       console.log(err);
     });
-<<<<<<< HEAD
 };
 
 //Add Passport
@@ -72,6 +55,3 @@ export function login() {
     }
   };
 }
-=======
-};
->>>>>>> 5a1e635d0f939dd65e08687c01f815d05b153e15
