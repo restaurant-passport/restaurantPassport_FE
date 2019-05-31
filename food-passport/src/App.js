@@ -26,9 +26,9 @@ class App extends Component {
         <NavBar />
         <Route path="/login" component={LoginPage} />
         <Route exact path="/" component={LandingPage} />
-        <Route exact path="/passports" component={PassportList} />
-        <Route exact path="/form" component={PassportForm} />
-        <Route exact path="/passport" component={Passport} />
+        <PrivateRoute exact path="/passports" component={PassportList} />
+        <PrivateRoute exact path="/form" component={PassportForm} />
+        <PrivateRoute exact path="/passport" component={Passport} />
         <Footer />
       </StyledApp>
     );

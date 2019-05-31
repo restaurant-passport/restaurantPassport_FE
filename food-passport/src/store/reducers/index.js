@@ -73,9 +73,7 @@ function passportReducer(state = initialState, action) {
       return {
         ...state,
         loadingPassports: true,
-        passports: state.passports.filter(passport => {
-          return passport.id !== action.payload;
-        }),
+        // passports: action.payload
         deletingPassport: true
       };
     case PASSPORT_DELETED:

@@ -1,4 +1,7 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import { deletePassport, updatePassport } from "../store/actions/index";
 import Restaurant from "./Restaurant";
 import styled from "styled-components";
 
@@ -10,10 +13,10 @@ function Passport(props) {
   //     return <h2>Looking for Passports</h2>;
   //   }
 
-  //   const deleteHandler = event => {
-  //     event.preventDefault();
-  //     props.deletePassport(props.match.params.id);
-  //   };
+  // const deleteHandler = event => {
+  //   event.preventDefault();
+  //   this.props.deletePassport(this.props.match.params.id);
+  // };
 
   //   const populatePassportForm = event => {
   //     event.preventDefault();
@@ -22,24 +25,27 @@ function Passport(props) {
 
   return (
     <StyledPassportContainer>
-      {props.passports.map(passport => (
-        <StyledPassport key={passport.city}>
-          <div>
-            <h3>{passport.city}</h3>
-            {passport.restaurants.map((restaurant, index) => (
-              <div key={restaurant.name}>
-                <Restaurant restaurant={restaurant} />
-              </div>
-            ))}
-          </div>
+      {props.passports.map(passport => {
+        console.log(passport);
+        return (
+          <StyledPassport key={passport.city}>
+            <div>
+              <h3>{passport.city}</h3>
+              {passport.restaurants.map((restaurant, index) => (
+                <div key={restaurant.name}>
+                  <Restaurant restaurant={restaurant} />
+                </div>
+              ))}
+            </div>
 
-          <input type="text" placeholder="add a restaurant" />
-          <div className="passport buttons">
-            <button>Update Passport</button>
-            <button>Delete Passport</button>
-          </div>
-        </StyledPassport>
-      ))}
+            <input type="text" placeholder="add a restaurant" />
+            <div className="passport buttons">
+              <button>Update Passport</button>
+              <button>Delete Passport</button>
+            </div>
+          </StyledPassport>
+        );
+      })}
     </StyledPassportContainer>
   );
 }
@@ -59,4 +65,15 @@ const StyledPassportContainer = styled.div`
   justify-content: space-evenly;
 `;
 
-export default Passport;
+const mapStateToProps = state => {
+  return {
+    passports: state.passports,
+    deletingPassport: state.deletingPassport,
+    updatePassports: state.updatePassport
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { deletePassport, updatePassport }
+)(Passport);

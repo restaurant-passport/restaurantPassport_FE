@@ -9,6 +9,7 @@ class LoginPage extends React.Component {
     credentials: {
       username: "",
       password: ""
+      // email: ""
     }
   };
 
@@ -23,7 +24,7 @@ class LoginPage extends React.Component {
 
   handleLogin = event => {
     event.preventDefault();
-    this.props.login(this.setState.credentials).then(() => {
+    this.props.login(this.state.credentials).then(() => {
       this.props.history.push("/passports");
     });
   };
@@ -51,6 +52,13 @@ class LoginPage extends React.Component {
             value={this.state.credentials.password}
             onChange={this.handleChange}
           />
+          {/* <input
+            type="email"
+            placeholder="email"
+            name="email"
+            value={this.state.credentials.email}
+            onChange={this.handleChange}
+          /> */}
           <button onClick={this.handleLogin}>Log In</button>
         </FormStyled>
       </LoginPageStyled>

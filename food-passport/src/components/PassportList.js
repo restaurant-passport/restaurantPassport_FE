@@ -1,7 +1,7 @@
 import React from "react";
 import Passport from "./Passport";
 import { connect } from "react-redux";
-import { getPassports } from "../store/actions/index";
+import { getPassports, addPassport } from "../store/actions/index";
 import styled from "styled-components";
 class PassportList extends React.Component {
   componentDidMount() {
@@ -34,5 +34,5 @@ const StyledNewPassButton = styled.button`
 
 export default connect(
   mapStateToProps,
-  { getPassports }
+  { getPassports, addPassport }
 )(PassportList);
