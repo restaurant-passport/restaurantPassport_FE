@@ -5,16 +5,17 @@ import {
   StyledNavLinksContainer
 } from "../styles/StyledNavBar";
 
-function NavBar() {
+function UserNavBar() {
   return (
     <StyledNavBar>
       <h1>Food Passport</h1>
       <StyledNavLinksContainer>
-        <StyledNavLinks to="/">Home</StyledNavLinks>
-        <StyledNavLinks to="/login">Login</StyledNavLinks>
+        <StyledNavLinks to="/passports">Your Passports</StyledNavLinks>
+        <StyledNavLinks to="/form">New Passport</StyledNavLinks>
+        <StyledNavLinks to="/">Logout</StyledNavLinks>
       </StyledNavLinksContainer>
     </StyledNavBar>
   );
 }
 
-export default NavBar;
+export default UserNavBar;

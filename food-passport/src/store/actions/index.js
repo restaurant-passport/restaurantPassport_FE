@@ -21,6 +21,30 @@ export const login = creds => dispatch => {
     });
 };
 
+// Register User
+export const REG_USER_START = "REG_USER_START";
+export const REG_USER_SUCCESS = "REG_USER_SUCCESS";
+export const REG_USER_FAIL = "REG_USER_FAIL";
+
+export const registerUser = creds => dispatch => {
+  dispatch({
+    type: REG_USER_START
+  });
+  axios.post(`${URL}/auth/register`, creds).then(res => {
+    console.log(res);
+    localStorage.setItem("token", res.data.token);
+    dispatch({
+      type: REG_USER_SUCCESS,
+      payload: res.data
+    }).catch(err => {
+      dispatch({
+        type: REG_USER_FAIL,
+        payload: err.response.message
+      });
+    });
+  });
+};
+
 // Fetching Users
 export const FETCHING_USERS = "FETCHING_USERS";
 export const USERS_FOUND = "USERS_FOUND";

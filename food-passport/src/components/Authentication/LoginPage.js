@@ -1,4 +1,5 @@
 import React from "react";
+import LoginNavBar from "./LoginNavBar";
 import { connect } from "react-redux";
 import { login } from "../../store/actions/index";
 
@@ -32,36 +33,39 @@ class LoginPage extends React.Component {
   render() {
     // console.log(this.props);
     return (
-      <LoginPageStyled>
-        {/* <i class="" /> some kind of food icon  */}
-        <h1>
-          Login to see your <span>Food Passports</span>!
-        </h1>
-        <FormStyled onSubmit={this.handleLogin}>
-          <input
-            type="text"
-            placeholder="username"
-            name="username"
-            value={this.state.credentials.username}
-            onChange={this.handleChange}
-          />
-          <input
-            type="password"
-            placeholder="password"
-            name="password"
-            value={this.state.credentials.password}
-            onChange={this.handleChange}
-          />
-          {/* <input
+      <div>
+        <LoginNavBar />
+        <LoginPageStyled>
+          <i class="fas fa-passport" />
+          <h1>
+            Login to see your <span>Food Passports</span>!
+          </h1>
+          <FormStyled onSubmit={this.handleLogin}>
+            <input
+              type="text"
+              placeholder="username"
+              name="username"
+              value={this.state.credentials.username}
+              onChange={this.handleChange}
+            />
+            <input
+              type="password"
+              placeholder="password"
+              name="password"
+              value={this.state.credentials.password}
+              onChange={this.handleChange}
+            />
+            {/* <input
             type="email"
             placeholder="email"
             name="email"
             value={this.state.credentials.email}
             onChange={this.handleChange}
           /> */}
-          <button onClick={this.handleLogin}>Log In</button>
-        </FormStyled>
-      </LoginPageStyled>
+            <button onClick={this.handleLogin}>Log In</button>
+          </FormStyled>
+        </LoginPageStyled>
+      </div>
     );
   }
 }

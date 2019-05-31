@@ -1,6 +1,8 @@
 import React from "react";
 import Passport from "./Passport";
+import UserNavBar from "./UserNavBar";
 import { connect } from "react-redux";
+
 import { getPassports, addPassport } from "../store/actions/index";
 import styled from "styled-components";
 class PassportList extends React.Component {
@@ -34,9 +36,10 @@ class PassportList extends React.Component {
   render() {
     return (
       <div>
+        <UserNavBar />
         <h1>Passport List</h1>
         <Passport passports={this.state.passports} />
-        <form onSubmit={this.submitPassport}>
+        {/* <form onSubmit={this.submitPassport}>
           <input
             type="text"
             name="city"
@@ -44,7 +47,7 @@ class PassportList extends React.Component {
             placeholder="New city passport"
             onChange={this.handleChanges}
           />
-        </form>
+        </form> */}
       </div>
     );
   }

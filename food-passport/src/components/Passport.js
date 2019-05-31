@@ -5,6 +5,7 @@ import {
   getPassports,
   addRestaurant
 } from "../store/actions/index";
+import { NavLink } from "react-router-dom";
 import Restaurant from "./Restaurant";
 import styled from "styled-components";
 
@@ -22,21 +23,6 @@ class Passport extends React.Component {
     this.props.deletePassport(id);
   };
 
-  handleChanges = event => {
-    this.setState({
-      [event.target.name]: event.target.value
-    });
-  };
-  // [event.target.name]: event.target.value
-  // newRestaurant: {
-  //   ...this.state.newRestaurant,
-  //   [event.target.name]: event.target.value
-  // }
-
-  submitRestaurant = event => {
-    event.preventDefault();
-    this.props.addRestaurant(this.state.newRestaurant);
-  };
   //   const populatePassportForm = event => {
   //     event.preventDefault();
   //     props.populatePassportForm(passport);
@@ -56,14 +42,9 @@ class Passport extends React.Component {
                   </div>
                 ))}
               </div>
-
-              <input
-                type="text"
-                placeholder="add a restaurant"
-                value={this.state.newRestaurant.name}
-                name="name"
-                onChange={this.handleChanges}
-              />
+              <button>
+                <NavLink to="/restaurantForm">Add Restaurant</NavLink>
+              </button>
               <div className="passport buttons">
                 <i
                   className="far fa-trash-alt"

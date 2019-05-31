@@ -3,18 +3,17 @@ import {
   StyledNavBar,
   StyledNavLinks,
   StyledNavLinksContainer
-} from "../styles/StyledNavBar";
+} from "../../styles/StyledNavBar";
 
-function NavBar() {
+function LoginNavBar() {
   return (
     <StyledNavBar>
       <h1>Food Passport</h1>
       <StyledNavLinksContainer>
         <StyledNavLinks to="/">Home</StyledNavLinks>
-        <StyledNavLinks to="/login">Login</StyledNavLinks>
       </StyledNavLinksContainer>
     </StyledNavBar>
   );
 }
 
-export default NavBar;
+export default LoginNavBar;
