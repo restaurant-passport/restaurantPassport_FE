@@ -7,9 +7,9 @@ import PrivateRoute from "./components/Authentication/PrivateRoute";
 import LoginPage from "./components/Authentication/LoginPage";
 import LandingPage from "./components/LandingPage";
 import PassportList from "./components/PassportList";
-import RestaurantForm from "./components/RestaurantForm";
+import PassportForm from "./components/PassportForm";
 import Passport from "./components/Passport";
-import NavBar from "./components/NavBar";
+
 import Footer from "./components/Footer";
 
 class App extends Component {
@@ -23,12 +23,11 @@ class App extends Component {
   render() {
     return (
       <StyledApp>
-        <NavBar />
         <Route path="/login" component={LoginPage} />
         <Route exact path="/" component={LandingPage} />
-        <Route exact path="/passports" component={PassportList} />
-        <Route exact path="/form" component={RestaurantForm} />
-        <Route exact path="/passport" component={Passport} />
+        <PrivateRoute exact path="/passports" component={PassportList} />
+        <PrivateRoute exact path="/form" component={PassportForm} />
+        <PrivateRoute exact path="/passport" component={Passport} />
         <Footer />
       </StyledApp>
     );

@@ -1,18 +1,19 @@
 import React from "react";
 import Passport from "./Passport";
 import { connect } from "react-redux";
-import { getPassports } from "../store/actions/index";
-
+import { getPassports, addPassport } from "../store/actions/index";
+import styled from "styled-components";
 class PassportList extends React.Component {
   componentDidMount() {
     this.props.getPassports();
   }
+
   render() {
     return (
       <div>
-        <h1>Passport List</h1>
+        
         <Passport passports={this.props.passports} />
-        <button>+ New Passport</button>
+        <StyledNewPassButton>+ New Passport</StyledNewPassButton>
       </div>
     );
   }
@@ -25,7 +26,13 @@ const mapStateToProps = state => {
   };
 };
 
+const StyledNewPassButton = styled.button`
+  height: 300px;
+  width: 200px;
+  margin: 20px;
+`;
+
 export default connect(
   mapStateToProps,
-  { getPassports }
+  { getPassports, addPassport }
 )(PassportList);

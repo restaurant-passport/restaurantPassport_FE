@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from "axios";
 import styled from 'styled-components'
 import { NavLink } from 'react-router-dom'
+import UserNavBar from './UserNavBar';
 
 
 const NewRestaurantForm = styled.div`
@@ -28,7 +29,7 @@ class RestaurantForm extends Component {
     }
     
     axios
-    .post("http://localhost:3333/smurfs", newRestaurant)
+    .post("https://foodpassword-bw.herokuapp.com", newRestaurant)
     .then(res => {
       this.props.addRestaurants(res.data)
       this.props.history.push('/'); 
@@ -47,9 +48,10 @@ class RestaurantForm extends Component {
 
   render() {
     return (
+      <div>
+        <UserNavBar/>
       <NewRestaurantForm>
-        <NavLink className = 'nav' to='/'>Home</NavLink>
-        <h1>NEW RESTAURANT</h1>
+        <h1>NEW PASSPORT</h1>
         <form onSubmit={this.addRestaurant}>
           <input
             onChange={this.handleInputChange}
@@ -75,6 +77,7 @@ class RestaurantForm extends Component {
           <button onClick={this.addRestaurant} type="submit">Add to the Passport</button>
         </form>
       </NewRestaurantForm>
+      </div>
     );
   }
 }

@@ -14,28 +14,29 @@ const sendUserError = (msg, res) => {
 
 let passports = [
   {
+    id: 1,
     city: "Eugene",
     restaurants: [
-      { name: "Toshi's Ramen", meal: "ramen", comment: "It was tasty" },
-      { name: "Makoto", meal: "sushi", comment: "so much fish" },
-      { name: "Tacovore", meal: "tacos", comment: "expensive" }
+      { id: 1, name: "Toshi's Ramen", meal: "ramen", comment: "It was tasty" },
+      { id: 2, name: "Makoto", meal: "sushi", comment: "so much fish" },
+      { id: 3, name: "Tacovore", meal: "tacos", comment: "expensive" }
     ]
   },
   {
+    id: 2,
     city: "San Diego",
     restaurants: [
-      { name: "The Broken Yolk", meal: "", comment: "" },
-      { name: "Searsucker", meal: "", comment: "" },
-      { name: "Water Grill", meal: "", comment: "" }
+      { id: 1, name: "The Broken Yolk", meal: "", comment: "" },
+      { id: 2, name: "Searsucker", meal: "", comment: "" },
+      { id: 3, name: "Water Grill", meal: "", comment: "" }
     ]
   }
- ];
-
-
+];
 server.get("/passports", (req, res) => {
   res.json(passports);
 });
-let passportId = passports.length;
+
+let passportId = 3;
 
 server.post("/passports", (req, res) => {
   const { city, restaurants } = req.body;

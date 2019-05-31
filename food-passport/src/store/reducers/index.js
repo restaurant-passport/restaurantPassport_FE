@@ -2,12 +2,16 @@ import {
   FETCHING_PASSPORTS,
   PASSPORTS_RETRIEVED,
   ADDING_PASSPORT,
-  // ADDED_PASSPORT,
+  PASSPORT_ADDED,
+  DELETE_PASSPORT,
+  PASSPORT_DELETED,
+  LOGIN_START,
   LOGIN_SUCCESS,
-  DELETE_PASSPORT
+  LOGIN_FAILURE
 } from "../actions";
 
 const initialState = {
+  user: {},
   isLoggedIn: false,
   passports: [
     {
@@ -23,10 +27,21 @@ const initialState = {
 
 function passportReducer(state = initialState, action) {
   switch (action.type) {
+    case LOGIN_START:
+      return {
+        ...state,
+        isLoggedIn: false
+      };
     case LOGIN_SUCCESS:
       return {
         ...state,
+        user: action.payload.user,
         isLoggedIn: true
+      };
+    case LOGIN_FAILURE:
+      return {
+        ...state,
+        isLoggedIn: false
       };
     case FETCHING_PASSPORTS:
       return {
@@ -45,19 +60,26 @@ function passportReducer(state = initialState, action) {
         loadingPassports: true,
         addingPassport: true
       };
-    // case ADDED_PASSPORT:
-    //   return {
-    //     ...state,
-    //     passports: action.payload,
-    //     loadingPassports: false,
-    //     addingPassport: false
-    //   };
+    case PASSPORT_ADDED:
+      return {
+        ...state,
+        passports: action.payload,
+        loadingPassports: false,
+        addingPassport: false
+      };
     case DELETE_PASSPORT:
       return {
         ...state,
-        passport:action.payload,
+        loadingPassports: true,
+        // passports: action.payload
         deletingPassport: true
-      }
+      };
+    case PASSPORT_DELETED:
+      return {
+        ...state,
+        loadingPassports: false,
+        deletingPassport: false
+      };
     default:
       return state;
   }

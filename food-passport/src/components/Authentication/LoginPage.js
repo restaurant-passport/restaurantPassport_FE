@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { login } from "../../store/actions/index";
+import LoginNavBar from "../LoginNavBar"
 
 import styled from "styled-components";
 
@@ -9,6 +10,7 @@ class LoginPage extends React.Component {
     credentials: {
       username: "",
       password: ""
+      // email: ""
     }
   };
 
@@ -29,7 +31,10 @@ class LoginPage extends React.Component {
   };
 
   render() {
+    // console.log(this.props);
     return (
+      <div>
+      <LoginNavBar/>
       <LoginPageStyled>
         {/* <i class="" /> some kind of food icon  */}
         <h1>
@@ -50,9 +55,17 @@ class LoginPage extends React.Component {
             value={this.state.credentials.password}
             onChange={this.handleChange}
           />
+          {/* <input
+            type="email"
+            placeholder="email"
+            name="email"
+            value={this.state.credentials.email}
+            onChange={this.handleChange}
+          /> */}
           <button onClick={this.handleLogin}>Log In</button>
         </FormStyled>
       </LoginPageStyled>
+      </div>
     );
   }
 }
@@ -91,11 +104,8 @@ const FormStyled = styled.form`
     width: 100%;
   }
 `;
-const mapStateToProps = ({ isLoggedIn }) => ({
-  isLoggedIn
-});
 
 export default connect(
-  mapStateToProps,
+  null,
   { login }
 )(LoginPage);
