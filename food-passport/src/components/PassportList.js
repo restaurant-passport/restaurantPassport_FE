@@ -4,16 +4,47 @@ import { connect } from "react-redux";
 import { getPassports, addPassport } from "../store/actions/index";
 import styled from "styled-components";
 class PassportList extends React.Component {
+  state = {
+    passports: this.props.passports,
+    newPassport: {
+      city: ""
+    }
+  };
+
   componentDidMount() {
+    console.log("CDM PL");
     this.props.getPassports();
   }
+
+  handleChanges = event => {
+    // event.persist();
+    this.setState({
+      newPassport: {
+        ...this.state.newPassport,
+        [event.target.name]: event.target.value
+      }
+    });
+  };
+
+  submitPassport = event => {
+    event.preventDefault();
+    this.props.addPassport(this.state.newPassport);
+  };
 
   render() {
     return (
       <div>
         <h1>Passport List</h1>
-        <Passport passports={this.props.passports} />
-        <StyledNewPassButton>+ New Passport</StyledNewPassButton>
+        <Passport passports={this.state.passports} />
+        <form onSubmit={this.submitPassport}>
+          <input
+            type="text"
+            name="city"
+            value={this.state.newPassport.city}
+            placeholder="New city passport"
+            onChange={this.handleChanges}
+          />
+        </form>
       </div>
     );
   }

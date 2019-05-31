@@ -18,7 +18,7 @@ const RestaurantName = styled.h3`
 `;
 
 const Restaurant = props => {
-  // console.log(props);
+  console.log(props);
   return (
     <div>
       <RestaurantCard>

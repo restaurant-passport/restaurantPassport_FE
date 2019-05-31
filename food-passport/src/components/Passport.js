@@ -1,53 +1,81 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { deletePassport, updatePassport } from "../store/actions/index";
+import {
+  deletePassport,
+  getPassports,
+  addRestaurant
+} from "../store/actions/index";
 import Restaurant from "./Restaurant";
 import styled from "styled-components";
 
-function Passport(props) {
-  //   const passport = props.passport.find(
-  //     passport => `${passport.id}` === props.match.params.id
-  //   );
-  //   if (!props.passports.length || !passport) {
-  //     return <h2>Looking for Passports</h2>;
-  //   }
+class Passport extends React.Component {
+  state = {
+    restaurants: this.props.restaurants,
+    newRestaurant: {
+      cityId: "",
+      name: ""
+    }
+  };
 
-  // const deleteHandler = event => {
-  //   event.preventDefault();
-  //   this.props.deletePassport(this.props.match.params.id);
-  // };
+  deleteHandler = (event, id) => {
+    // event.preventDefault();
+    this.props.deletePassport(id);
+  };
 
+  handleChanges = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  };
+  // [event.target.name]: event.target.value
+  // newRestaurant: {
+  //   ...this.state.newRestaurant,
+  //   [event.target.name]: event.target.value
+  // }
+
+  submitRestaurant = event => {
+    event.preventDefault();
+    this.props.addRestaurant(this.state.newRestaurant);
+  };
   //   const populatePassportForm = event => {
   //     event.preventDefault();
   //     props.populatePassportForm(passport);
   //   };
+  render() {
+    return (
+      <StyledPassportContainer>
+        {this.props.passports.map(passport => {
+          console.log(passport);
+          return (
+            <StyledPassport key={passport.city}>
+              <div>
+                <h3>{passport.city}</h3>
+                {passport.restaurants.map((restaurant, index) => (
+                  <div key={restaurant.name}>
+                    <Restaurant restaurant={restaurant} />
+                  </div>
+                ))}
+              </div>
 
-  return (
-    <StyledPassportContainer>
-      {props.passports.map(passport => {
-        console.log(passport);
-        return (
-          <StyledPassport key={passport.city}>
-            <div>
-              <h3>{passport.city}</h3>
-              {passport.restaurants.map((restaurant, index) => (
-                <div key={restaurant.name}>
-                  <Restaurant restaurant={restaurant} />
-                </div>
-              ))}
-            </div>
-
-            <input type="text" placeholder="add a restaurant" />
-            <div className="passport buttons">
-              <button>Update Passport</button>
-              <button>Delete Passport</button>
-            </div>
-          </StyledPassport>
-        );
-      })}
-    </StyledPassportContainer>
-  );
+              <input
+                type="text"
+                placeholder="add a restaurant"
+                value={this.state.newRestaurant.name}
+                name="name"
+                onChange={this.handleChanges}
+              />
+              <div className="passport buttons">
+                <i
+                  className="far fa-trash-alt"
+                  onClick={e => this.deleteHandler(e, passport.id)}
+                />
+              </div>
+            </StyledPassport>
+          );
+        })}
+      </StyledPassportContainer>
+    );
+  }
 }
 
 const StyledPassport = styled.div`
@@ -75,5 +103,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { deletePassport, updatePassport }
+  { deletePassport, getPassports, addRestaurant }
 )(Passport);

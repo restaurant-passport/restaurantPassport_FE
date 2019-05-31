@@ -5,8 +5,8 @@ import {
   PASSPORT_ADDED,
   DELETE_PASSPORT,
   PASSPORT_DELETED,
-  UPDATE_PASSPORT,
-  PASSPORT_UPDATED,
+  // UPDATE_PASSPORT,
+  // PASSPORT_UPDATED,
   LOGIN_START,
   LOGIN_SUCCESS,
   LOGIN_FAILURE
@@ -59,6 +59,7 @@ function passportReducer(state = initialState, action) {
     case ADDING_PASSPORT:
       return {
         ...state,
+        passports: [...state.passports, action.payload],
         loadingPassports: true,
         addingPassport: true
       };
@@ -81,18 +82,6 @@ function passportReducer(state = initialState, action) {
         ...state,
         loadingPassports: false,
         deletingPassport: false
-      };
-    case UPDATE_PASSPORT:
-      return {
-        ...state,
-        loadingPassports: true,
-        updatingPassport: true
-      };
-    case PASSPORT_UPDATED:
-      return {
-        ...state,
-        loadingPassports: false,
-        updatingPassport: false
       };
     default:
       return state;

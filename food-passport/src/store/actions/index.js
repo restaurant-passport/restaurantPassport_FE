@@ -36,7 +36,7 @@ export const getUsers = () => dispatch => {
       console.log(response.data);
     })
     .catch(err => {
-      console.log(err)
+      console.log(err);
       dispatch({
         type: FETCHING_USERS_FAIL
       });
@@ -52,10 +52,11 @@ export const getPassports = () => dispatch => {
     type: FETCHING_PASSPORTS
   });
   axios
-    .get(`${URL}/passport`, {
-      headers: { Authorization: token }})
+    .get(`https://foodpassword-bw.herokuapp.com/api/passport`, {
+      headers: { Authorization: localStorage.getItem("token") }
+    })
     .then(response => {
-      console.log(response.data);
+      console.log(response);
       dispatch({
         type: PASSPORTS_RETRIEVED,
         payload: response.data
@@ -75,14 +76,16 @@ export const addPassport = passport => dispatch => {
     type: ADDING_PASSPORT
   });
   axios
-    .post(`${URL}/passport`, passport, {
-      headers: { Authorization: token }}), 
+    .post(`${URL}/api/passport`, passport, {
+      headers: { Authorization: localStorage.getItem("token") }
+    })
     .then(response => {
       console.log(response.data);
-      // dispatch({
-      //   type: PASSPORT_ADDED,
-      //   payload: response.data
-      // });
+      dispatch({
+        type: PASSPORT_ADDED,
+        payload: response.data
+      });
+      this.props.history.push("/passports");
     })
     .catch(error => {
       console.log(error);
@@ -98,15 +101,16 @@ export const deletePassport = id => dispatch => {
     type: DELETE_PASSPORT
   });
   axios
-    .delete(`${URL}/passport/${id}`,{
-      headers: { Authorization: token }})
+    .delete(`${URL}/api/passport/${id}`, {
+      headers: { Authorization: localStorage.getItem("token") }
+    })
     .then(response => {
       console.log(response.data);
       dispatch({
         type: PASSPORT_DELETED,
         payload: response.data
       });
-      this.props.history.push("/passports");
+      // this.props.history.push("/passports");
     })
     .catch(error => {
       console.log(error);
@@ -146,21 +150,21 @@ export const getRestaurants = () => dispatch => {
     type: FETCH_RESTAURANTS
   });
   axios
-  .get(`${URL}/api/rest`,{
-    headers: { Authorization: token }})
-  .then(response => {
-    console.log(response.data);
-    dispatch({
-      type: FOUND_RESTAURANTS
+    .get(`${URL}/api/rest`, {
+      headers: { Authorization: localStorage.getItem("token") }
     })
-    .catch(err => {
-      console.log(err);
+    .then(response => {
+      console.log(response.data);
       dispatch({
-        type: FAIL_FETCHING_RESTAURANTS
-      })
-    })
-  })
-}
+        type: FOUND_RESTAURANTS
+      }).catch(err => {
+        console.log(err);
+        dispatch({
+          type: FAIL_FETCHING_RESTAURANTS
+        });
+      });
+    });
+};
 
 // Fetch Restaurant by Id
 export const FETCH_RESTAURANT_ID = "FETCH_RESTAURANT_ID";
@@ -170,25 +174,25 @@ export const FAIL_RESTAURANT_ID = "FAIL_RESTAURANT_ID";
 export const getRestaurantById = () => dispatch => {
   dispatch({
     type: FETCH_RESTAURANT_ID
-  })
+  });
   axios
-  .get(`${URL}/api/rest/:id`,{
-    headers: { Authorization: token }})
-  .then(response => {
-    console.log(response.data);
-    dispatch({
-      type: FOUND_RESTAURANT_ID
+    .get(`${URL}/api/rest/:id`, {
+      headers: { Authorization: localStorage.getItem("token") }
     })
-    .catch(err => {
-      console.log(err);
+    .then(response => {
+      console.log(response.data);
       dispatch({
-        type: FAIL_RESTAURANT_ID
-      })
-    })
-  })
-}
+        type: FOUND_RESTAURANT_ID
+      }).catch(err => {
+        console.log(err);
+        dispatch({
+          type: FAIL_RESTAURANT_ID
+        });
+      });
+    });
+};
 
-// Add Restaurant 
+// Add Restaurant
 export const ADD_RESTAURANT = "ADD_RESTAURANT";
 export const ADDED_RESTAURANT = "ADDED_RESTAURANT";
 export const FAIL_ADD_RESTAURANT = "FAIL_ADD_RESTAURANT";
@@ -198,21 +202,22 @@ export const addRestaurant = () => dispatch => {
     type: ADD_RESTAURANT
   });
   axios
-    .post(`${URL}/api/rest`,{
-      headers: { Authorization: token }})
+    .post(`${URL}/api/rest`, {
+      headers: { Authorization: localStorage.getItem("token") }
+    })
     .then(response => {
-      console.log(response.data)
+      console.log(response.data);
       dispatch({
         type: ADDED_RESTAURANT
-      })
+      });
     })
     .catch(err => {
       console.log(err);
       dispatch({
         type: FAIL_ADD_RESTAURANT
-      })
-    })
-}
+      });
+    });
+};
 
 // Delete Restaurant by Id
 export const DELETE_RESTAURANT = "DELETE_RESTAURANT";
@@ -224,15 +229,16 @@ export const deleteRestaurant = id => dispatch => {
     type: DELETE_RESTAURANT
   });
   axios
-    .delete(`${URL}/api/rest/:id`,{
-      headers: { Authorization: token }})
+    .delete(`${URL}/api/rest/:id`, {
+      headers: { Authorization: localStorage.getItem("token") }
+    })
     .then(response => {
-      console.log(response.data)
+      console.log(response.data);
     })
     .catch(err => {
-      console.log(err)
+      console.log(err);
       dispatch({
         type: FAIL_DELETE_RESTAURANT
-      })
-    })
-}
+      });
+    });
+};
